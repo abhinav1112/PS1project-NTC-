@@ -84,10 +84,12 @@
 	?>
 
 	<?php
-	$servername = "localhost";
+	
 	$username = 'root';
 	$password = '';
-	$db = 'appraisal';
+	$db1 = 'appraisal';
+	
+	$db = new mysqli('localhost', $username, $password, $db1) or die("Unable to connect");
 	$servername = "localhost";
             $username = "root";
             $password = "";
@@ -96,7 +98,7 @@
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }		
-	$db = new mysqli('localhost', $username, $password, $db) or die("Unable to connect");
+	
 	$q1=$_SESSION["Name"];
 	$q12=$_SESSION["Email"];
 	$q2=$_SESSION["Password"];
@@ -122,14 +124,15 @@
 		header("location:login.php");
 	}
 	else
-	mysqli_query($db,"INSERT INTO employee( Name, Email,Password, DOB, DOJ, Qualification, Department, Designation, PlaceOfPosting, Payscale, Basicpay, Gradepay)	VALUES ('$q1','$q12', '$q2', '$q3', '$q4', '$q5', '$q6', '$q7', '$q8', '$q9', '$q10', '$q11')");
+	{mysqli_query($db,"INSERT INTO employee( Name, Email,Password, DOB, DOJ, Qualification, Department, Designation, PlaceOfPosting, Payscale, Basicpay, Gradepay)	VALUES ('$q1','$q12', '$q2', '$q3', '$q4', '$q5', '$q6', '$q7', '$q8', '$q9', '$q10', '$q11')");
+}
             
 	echo "Hey ".$q1. "! You have been registered Successfully. <br>";
 	$sql1 = "SELECT * FROM employee ORDER BY ID DESC LIMIT 1";
     $result1 = $conn->query($sql1);
-	while($row = mysqli_fetch_array($result1))
+	while($row1 = mysqli_fetch_array($result1))
 	{
-		echo "Your UserID for login is: ".$row['ID']. "<br>";
+		echo "Your UserID for login is: ".$row1['ID']. "<br>";
 	}
 	
 ?>	

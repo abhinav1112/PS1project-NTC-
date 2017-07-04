@@ -1,3 +1,9 @@
+<?php
+session_start();
+if(empty($_SESSION["IDhr"])){
+     header("location:login.php");
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -39,7 +45,6 @@
   
 <?php
 	// define variables and set to empty values
-	session_start();
 	//$link = "";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$_SESSION["init"] = test_input($_POST["init"]);
@@ -48,6 +53,7 @@
 	  	$_SESSION["accept"] = test_input($_POST["accept"]);
 		
 		$_SESSION["review"] = test_input($_POST["review"]);
+		$_SESSION["EmpId"] = test_input($_POST["qid"]);
 	  
 	}
 	function test_input($data) {
@@ -71,13 +77,14 @@
 	$q2=$_SESSION["review"];
 	$q3=$_SESSION["accept"];
 	$qq=1;
-	mysqli_query($db,"UPDATE initiating SET InitId = '{$q1}' WHERE EmpId='{$q}';");
-	mysqli_query($db,"UPDATE reviewing SET ReviewId = '{$q2}' WHERE EmpId='{$q}';");
-	mysqli_query($db,"UPDATE accepting SET AcceptId = '{$q3}' WHERE EmpId='{$q}';");
+	$zero=0;
+	mysqli_query($db,"UPDATE initiating SET InitId = '{$q1}',FormStatus= '{$zero}' WHERE EmpId='{$q}';");
+	mysqli_query($db,"UPDATE reviewing SET ReviewId = '{$q2}',FormStatus= '{$zero}' WHERE EmpId='{$q}';");
+	mysqli_query($db,"UPDATE accepting SET AcceptId = '{$q3}',FormStatus= '{$zero}' WHERE EmpId='{$q}';");
     mysqli_query($db,"UPDATE employee SET InitiatingOfficer = '{$qq}' WHERE ID='{$q1}';");
 	mysqli_query($db,"UPDATE employee SET  ReviewingOfficer = '{$qq}' WHERE ID='{$q2}';");
 	mysqli_query($db,"UPDATE employee SET  AcceptingOfficer = '{$qq}' WHERE ID='{$q3}';");
-	echo "User has been registered. <br>";
+	echo "User has assigned officers successfully. <br>";
 		
 	/*$sql = mysqli_query($db,"SELECT top 1 * FROM employee ORDER BY ID DESC");
 	while($row = mysqli_fetch_array($sql)){
@@ -86,5 +93,10 @@
 	
 ?>	
 	
-	
+	<form id="afterloginform">
+     <div class="form-group">
+      <label for="pwd">Review as:</label>
+	  <button  class="btn btn-default"><a href="hr.php">Go back<a/></button>
+    </div>
+   </form>
 

@@ -1,4 +1,5 @@
      <?php
+	 session_start();
 		$_SESSION["Password"] =  $_SESSION["ID"] = $_SESSION["Email"]="";
 
 ?>
@@ -38,11 +39,13 @@
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
-   </div> 
-   <a href="hrlogin.php"><button class="btn btn-default btn-success pull-right">HR Login</button></a>
-   
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class = "active"><a href="hrlogin.php">login as HR</a></li>
+                </ul>
+            </div>
+   </div>
    <form id="loginform" action="loginb.php" method="post" >
-   
     <div class="form-group">
       <label for="userID">User ID:</label>
       <input type="text" class="form-control" name="ID">
@@ -51,12 +54,10 @@
       <label for="pwd">Password:</label>
       <input type="password" class="form-control" name="Password">
     </div>
-    <!--<button class="btn btn-default btn-primary" type="submit"><a href="forgotlogin1.php">Forgot Password</button>-->
     <button type="submit" class="btn btn-default btn-primary">Login</button>
     <button type="submit" class="btn btn-default"><a href="signup.php">Sign Up</button>
+	   <button class="btn btn-default " type="submit"><a href="forgotlogin1.php">Forgot Password</a></button>
    </form>
-
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

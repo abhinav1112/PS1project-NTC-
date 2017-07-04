@@ -1,26 +1,8 @@
-<?php
-session_start();
-if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
-     header("location:login.php");
-   }
-?>
-<?php
-	// define variables and set to empty values
-	//$link = "";
-	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-		$_SESSION["FormId"] = test_input($_POST["qid"]);
-	  
-	}
-	function test_input($data) {
-	  $data = trim($data);
-	  $data = stripslashes($data);
-	  $data = htmlspecialchars($data);
-	  return $data;
-	}
-	?>
+
 <?php
-    	$servername = "localhost";
+	
+	$servername = "localhost";
             $username = "root";
             $password = "";
             $dbname = "appraisal";
@@ -29,7 +11,8 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
                 die("Connection failed: " . $conn->connect_error);
             }
 		
-	$q=$_SESSION["FormId"];
+	$q=$_SESSION["FormId"];	
+	echo "$q";
 	$sql = "SELECT * FROM application WHERE ID ='$q'";
     $result = $conn->query($sql);
 	
@@ -37,7 +20,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
 	{
 		$Name = $row["Name"];
 		$ID = $row["ID"];
-		$Designation  = $row["Designation"];
+		$Designation  = $row["Designation "];
 		$PayScale = $row["PayScale"];
 		$Qualification = $row["Qualification"];
 		$PlaceOfPosting = $row["PlaceOfPosting"];
@@ -147,46 +130,6 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
 		$YER_ma4 = $row["YER_ma4"];
 		$YER_ma5 = $row["YER_ma5"];
 		$YER_ma6 = $row["YER_ma6"];
-		
-		$p2c_1 = $row["p2c_1"];
-	    $p2c_2 = $row["p2c_2"];
-		$p2c_3 = $row["p2c_3"];
-		$p2c_4 = $row["p2c_4"];
-		$p2c_5 = $row["p2c_5"];
-		$p2c_6 = $row["p2c_6"];
-		$p2c_7 = $row["p2c_7"];
-		$p2c_8 = $row["p2c_8"];
-		$p2c_9 = $row["p2c_9"];
-
-		$p3v_1= $row["p3v_1"];
-		$p3v_2= $row["p3v_2"];
-		$p3v_3= $row["p3v_3"];
-		$p3v_4= $row["p3v_4"];
-		$p3v_5= $row["p3v_5"];
-		$p3v_6= $row["p3v_6"];
-		$p3v_7= $row["p3v_7"];
-		$p3v_8= $row["p3v_8"];
-		$p3v_9= $row["p3v_9"];
-		$p3v_10= $row["p3v_10"];
-		
-		$p4p_1= $row["p4p_1"];
-		$p4p_2= $row["p4p_2"];
-		$p4p_3= $row["p4p_3"];
-		$p4p_4= $row["p4p_4"];
-		$p4p_5= $row["p4p_5"];
-		
-		$ndIA= $row["ndIA"];
-		$ndRA= $row["ndRA"];
-		$cRA= $row["cRA"];
-		$ndAA= $row["ndAA"];
-		$cAA= $row["cAA"];
-		$cop= $row["cop"];
-		
-		$total0= $row["total0"];
-		$total1= $row["total1"];
-		$total2= $row["total2"];
-		$total3= $row["total3"];
-		$totalsum= $row["totalsum"];
 	}
 	echo "<!DOCTYPE html>
 <html lang=\"en\">
@@ -219,9 +162,9 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         tc= tc + parseInt(document.getElementById(\"p2c_7\").value);
         tc= tc + parseInt(document.getElementById(\"p2c_8\").value);
         tc= tc + parseInt(document.getElementById(\"p2c_9\").value);
-        total1=tc*20/45;
+        total1=tc*20/45
         document.getElementById(\"demo1\").innerHTML = total1;
-		}
+      }
       
 
     function TV() {
@@ -330,60 +273,60 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
     <div class=\"form-group \">
       <label  class=\"control-label col-lg-2\">Name:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"text\" value=\"$Name\" disabled/>
+      <input class=\"form-control \" type=\"text\" value=\"$Name\" />
       </div>
       <label  class=\"control-label col-lg-2\">Employee No.:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"text\" value=\"$ID\" disabled/>
+      <input class=\"form-control \" type=\"text\" value=\"$ID\" />
       </div>
     </div>
     
     <div class=\"form-group \">
       <label  class=\"control-label col-lg-2\">Designation:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"text\" value=\"$Designation\" disabled/>
+      <input class=\"form-control \" type=\"text\" value=\"$Designation\" />
       </div>
       <label  class=\"control-label col-lg-2\">Scale Of Pay:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"text\" value=\"$PayScale\" disabled/>
+      <input class=\"form-control \" type=\"text\" value=\"$PayScale\" />
       </div>
     </div>
     
     <div class=\"form-group \">
       <label  class=\"control-label col-lg-2\">Qualification:(Academic and Professional)</label>
       <div class=\"col-lg-10\">
-      <input class=\"form-control \" type=\"text\" value=\"$Qualification\" disabled></input>
+      <textarea class=\"form-control \" type=\"text\" value=\"$Qualification\"></textarea>
       </div>
     </div>
     
     <div class=\"form-group \">
       <label  class=\"control-label col-lg-2\">Unit/Location:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"text\" value=\"$PlaceOfPosting\" disabled/>
+      <input class=\"form-control \" type=\"text\" value=\"$PlaceOfPosting\" />
       </div>
       
       <label  class=\"control-label col-lg-2\">Date of Birth:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"date\" value=\"$DOB\" disabled/>
+      <input class=\"form-control \" type=\"date\" value=\"$DOB\" />
       </div>
     </div>
     
     <div class=\"form-group \">
       <label  class=\"control-label col-lg-2\">Date Of Joining:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"date\" value=\"$DOJ\" disabled/>
+      <input class=\"form-control \" type=\"date\" value=\"$DOJ\" />
       </div>
       
       <label  class=\"control-label col-lg-2\">Date Of Retirement:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"date\" value=\"$DOR\" disabled/>
+      <input class=\"form-control \" type=\"date\" value=\"$DOR\" />
       </div>
     </div>
     
     <div class=\"form-group \">
       <label  class=\"control-label col-lg-4\">Date of filling the property return for the year:</label>
       <div class=\"col-lg-4\">
-      <input class=\"form-control \" type=\"date\" value=\"$DOF\" disabled/>
+      <input class=\"form-control \" type=\"date\" value=\"$DOF\" />
       </div>
     </div><br>
     
@@ -398,32 +341,32 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         <th>KEY RESPONSIBILITIES</th>
       </tr>
       <tr>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f1\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t1\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc1\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos1\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res1\" disabled/></td> 
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f1\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t1\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc1\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos1\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res1\" /></td> 
       </tr>
       <tr>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f2\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t2\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc2\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos2\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res2\" disabled/></td> 
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f2\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t2\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc2\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos2\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res2\" /></td> 
       </tr>
       <tr>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f3\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t3\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc3\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos3\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res3\" disabled/></td> 
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f3\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t3\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc3\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos3\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res3\" /></td> 
       </tr>
       <tr>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f4\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t4\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc4\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos4\" disabled/></td>
-         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res4\" disabled/></td> 
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_f4\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_t4\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_loc4\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_pos4\" /></td>
+         <td><input type=\"text\" class=\"form-control\" value=\"$PPH_res4\" /></td> 
       </tr>
       </table>
     </div>
@@ -452,51 +395,51 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         
         <tr>
            <td>1</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev1\" disabled/></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev1\" /></td> 
         </tr>
         <tr>
            <td>2</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev2\" disabled/></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev2\" /></td> 
         </tr>
         <tr>
            <td>3</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev3\" disabled/></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev3\" /></td> 
         </tr>
         <tr>
            <td>4</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev4\" disabled/></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev4\" /></td> 
         </tr>
         <tr>
            <td>5</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev5\" disabled/></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev5\" /></td> 
         </tr>
         <tr>
            <td>6</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev6\" disabled/></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_kpa6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ind6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_mm6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_ach6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$MYR_rev6\" /></td> 
         </tr>
         
       </table>
@@ -521,65 +464,63 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         
         <tr>
            <td>1</td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm1\" id=\"YER_mm1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach1\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev1\" disabled/></td> 
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma1\" id=\"YER_ma1\" disabled/></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm1\" id=\"YER_mm1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach1\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev1\" /></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma1\" id=\"YER_ma1\" /></td>
         </tr>
         <tr>
            <td>2</td>
-            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm2\" id=\"YER_mm2\" disabled /></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach2\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev2\" disabled/></td> 
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma2\" id=\"YER_ma2\" disabled /></td>
+            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm2\" id=\"YER_mm2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach2\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev2\" /></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma2\" id=\"YER_ma2\" /></td>
         </tr>
         <tr>
            <td>3</td>
-            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm3\" id=\"YER_mm3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach3\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev3\" disabled/></td> 
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma3\" id=\"YER_ma3\" disabled/></td>
+            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm3\" id=\"YER_mm3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach3\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev3\" /></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma3\" id=\"YER_ma3\" /></td>
         </tr>
         <tr>
            <td>4</td>
-            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm4\" id=\"YER_mm4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach4\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev4\" disabled/></td> 
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma4\" id=\"YER_ma4\" disabled/></td> 
+            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm4\" id=\"YER_mm4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach4\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev4\" /></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma4\" id=\"YER_ma4\" /></td> 
         </tr>
         <tr>
            <td>5</td>
-            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm5\" id=\"YER_mm5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach5\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev5\" disabled/></td> 
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma5\" id=\"YER_ma5\" disabled/></td>
+            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm5\" id=\"YER_mm5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach5\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev5\" /></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma5\" id=\"YER_ma5\" /></td>
         </tr>
         <tr>
            <td>6</td>
-            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm6\" id=\"YER_mm6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach6\" disabled/></td>
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev6\" disabled/></td> 
-           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma6\" id=\"YER_ma6\" disabled/></td>
+            <td><input type=\"text\" class=\"form-control\" value=\"$YER_kpa6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ind6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_mm6\" id=\"YER_mm6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ach6\" /></td>
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_rev6\" /></td> 
+           <td><input type=\"text\" class=\"form-control\" value=\"$YER_ma6\" id=\"YER_ma6\" /></td>
         </tr>
         
       </table>
     </div>";
     ?>
-	<?php
-	
-    echo "<div class = \"form-group\">
+    <div class="form-group">
       <p>*The column 'marks awarded' will be filled only by the Appraiser</p>
     </div>
     <hr>
@@ -587,199 +528,202 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
     
     
   </form>
-  <div class=\"form-group \">
-      <label  class=\"control-label col-lg-6\">Total Performance marks for the year(Proforate total marks of 50) = (Total marks obtained) * 50 / (Total maximum marks) </label>
-      <div class=\"col-lg-6\">
-        <label id=\"demo0\" width=\"30%\" >=$total0</label> 
+  <div class="form-group ">
+      <label  class="control-label col-lg-6">Total Performance marks for the year(Proforate total marks of 50) = (Total marks obtained) * 50 / (Total maximum marks) </label>
+      <div class="col-lg-6">
+        <label id="demo0" width="30%" ></label> <button  class="btn btn-default btn-primary" onclick="TP()">Generate Total</button>
       </div>
     </div><br>
-   <div class=\"form-group \">
-      <div class=\"col-lg-10\">
-      <input class=\"form-control \" type=\"text\" value=\"$cop\" name=\"cop\" placeholder=\"Comments on performance and review discussions if any by appraiser including need for training and development\" disabled></input>
+   <div class="form-group ">
+      <div class="col-lg-10">
+      <textarea class="form-control " type="text" name="COP" placeholder="Comments on performance and review discussions if any by appraiser including need for training and development"></textarea>
       </div>
     </div> 
   </div>
   </div>
 
-            <h4 class=\"margin\"><u><b>INITIATING AUTHORITY SCORES</b></u></h4>
-          <div class=\"form-group\">
+            <h4 class="margin"><u><b>INITIATING AUTHORITY SCORES</b></u></h4>
+          <div class="form-group">
       	 <h4><u>PART-2 COMPETENCIES:(This section consists of functional/technical and managerial competencies reuired for successful performance in the job)</u></h4>		
-      <table class=\"table-bordered table-striped\" style=\"width:100%\">
+      <table class="table-bordered table-striped" style="width:100%">
         <tr>
-          <th class=\"text-center\">Serial No.</th>
-          <th class=\"text-center\">COMPETENCIES</th>
-          <th class=\"text-center\">RATINGS (1-5)</th>
+          <th class="text-center">Serial No.</th>
+          <th class="text-center">COMPETENCIES</th>
+          <th class="text-center">RATINGS (1-5)</th>
         </tr>
         <tr>
            <td>1.</td>
            <td><b>Business Environment Knowledge</b> : Knowledge and understanding of economic, legal, socio-political trends</td>
-           <td><input id=\"p2c_1\"  type=\"text\" class=\"form-control\" name=\"p2c_1\" value=\"$p2c_1\" disabled/></td>
+           <td><input id="p2c_1"  type="text" class="form-control" name="p2c_1" /></td>
         </tr>
         <tr>
            <td>2.</td>
            <td><b>Profession Specific Knowledge</b> : knowledge related to profession as a whole. Knowledge which is determined by authority and responsibility of other positions; knowledge of mission, values and standard operating procedures, policies</td>
-           <td><input id = \"p2c_2\" type=\"text\" class=\"form-control\" name=\"p2c_2\" value=\"$p2c_2\" disabled></td>
+           <td><input id = "p2c_2" type="text" class="form-control" name="p2c_2"></td>
         </tr>
         <tr>
            <td>3.</td>
            <td><b>Making Business Decisions</b> : *Use business related data to support effective and timely business decisions by systematically *gathering relevant business information *identifying the strengths and weaknesses of a particular business line *recognising opportunities or threats and acting on them rapidly *using business facts collected in daily decision making</td>
-           <td><input id = \"p2c_3\" type=\"text\" class=\"form-control\" name=\"p2c_3\" value=\"$p2c_3\" disabled></td>
+           <td><input id = "p2c_3" type="text" class="form-control" name="p2c_3"></td>
         </tr>
         <tr>
            <td>4.</td>
            <td><b>Vision</b> : Develop a vision for the future of the Organisation by, grasping the meaning of trends and inter-relationships between the Organisation and its environment at the local, national and international level; identifying fundamental values and beliefs to guide the Organisation into future</td>
-           <td><input id = \"p2c_4\" type=\"text\" class=\"form-control\" name=\"p2c_4\" value=\"$p2c_4\" disabled></td>
+           <td><input id = "p2c_4" type="text" class="form-control" name="p2c_4"></td>
         </tr>
         <tr>
            <td>5.</td>
            <td><b>Systematic Thinking</b> : Identifying connections between situations that are not obviously related, using common senses, past experiences and basic rules to identify key underlying issues, generating and testing hunched which may explain complex situations and problems</td>
-           <td><input id = \"p2c_5\" type=\"text\" class=\"form-control\" name=\"p2c_5\" value=\"$p2c_5\" disabled></td>
+           <td><input id = "p2c_5" type="text" class="form-control" name="p2c_5"></td>
         </tr>
         <tr>
            <td>6.</td>
            <td><b>Networking</b> : To cultivate and informal network which may help to get things done through, developing contacts with people outside of the immediate work unit, using network as source of information and support</td>
-           <td><input id = \"p2c_6\" type=\"text\" class=\"form-control\" name=\"p2c_6\" value=\"$p2c_6\" disabled></td>
+           <td><input id = "p2c_6" type="text" class="form-control" name="p2c_6"></td>
         </tr>
         <tr>
            <td>7.</td>
            <td><b>Organising resources</b> : Ensure that all financial, personnel  and/or other resources are in place to meet needs by, identifying and acquiring the resources allocating and utilizing the resources in a timely and cost effective way, monitoring and controlling all resources required to maintain the efficiency of operations</td>
-           <td><input id = \"p2c_7\" type=\"text\" class=\"form-control\" name=\"p2c_7\" value=\"$p2c_7\" disabled></td>
+           <td><input id = "p2c_7" type="text" class="form-control" name="p2c_7"></td>
         </tr>
         <tr>
            <td>8.</td>
            <td><b>Inspire people</b> : To generate a sense of purpose for the work done by the organisation through instilling enthusiasm, loyalty and commitment among team member at  all levels of the organisation, inspiring, motivating and guiding others towards organisational goals and objectives, setting an example for others by behaving in ways that are consistent with espoused beliefs and values and the organisation’s vision and direction</td>
-           <td><input id = \"p2c_8\" type=\"text\" class=\"form-control\" name=\"p2c_8\" value=\"$p2c_8\" disabled></td>
+           <td><input id = "p2c_8" type="text" class="form-control" name="p2c_8"></td>
         </tr>
         <tr>
            <td>9.</td>
            <td><b>Team Player</b> : To contribute to group objectives in a environment through, cooperating and interacting with others, contributing actively and fully to team projects, working cooperatively as opposed to competitively with others, acknowledging diverse opinions, addressing relevant concerns and working towards consensual solutions that enhance the output of the team</td>
-           <td><input id = \"p2c_9\" type=\"text\" class=\"form-control\" name=\"p2c_9\" value=\"$p2c_9\" disabled></td>
+           <td><input id = "p2c_9" type="text" class="form-control" name="p2c_9"></td>
         </tr>
       </table>
 
       <br>
 
-      <label  class=\"control-label col-lg-6\">Rating of competencies=((Total of all attributes)*20/45):
+      <label  class="control-label col-lg-6">Rating of competencies=((Total of all attributes)*20/45):
       </label>
-        <div class=\"col-lg-6\">
-        <label id=\"demo1\">=$total1</label>
+        <div class="col-lg-6">
+        <label id="demo1"></label>
+        <button  class="btn btn-default btn-primary" onclick="TC()">Generate Total</button>
 		
 		</div>
 		<hr>
         <br><br><br>
        
 	  <h4><u>PART-3 VALUES:(This section consists of values which are to be demonstrated in day to day activities.)</u></h4>
-      <table class=\"table-bordered table-striped\" style=\"width:100%\">
+      <table class="table-bordered table-striped" style="width:100%">
         <tr>
-          <th class=\"text-center\">Serial No.</th>
-          <th class=\"text-center\">VALUES</th>
-          <th class=\"text-center\">RATINGS (1-5)</th>
+          <th class="text-center">Serial No.</th>
+          <th class="text-center">VALUES</th>
+          <th class="text-center">RATINGS (1-5)</th>
         </tr>
         <tr>
            <td>1.</td>
            <td><b>Fairness</b> : Decisions are made objectively, free from patronage and reflect the just treatment of employees and applicants.</td>
-           <td><input value=\"$p3v_1\" disabled id = \"p3v_1\" type=\"text\" class=\"form-control\" name = \"p3v_1\" disabled/></td>
+           <td><input id = "p3v_1" type="text" class="form-control" name = "p3v_1"/></td>
         </tr>
         <tr>
            <td>2.</td>
            <td><b>Transparency</b> : There is open communication about every aspect of managerial decisions which concern people</td>
-           <td><input value=\"$p3v_2\" disabled id = \"p3v_2\" type=\"text\" class=\"form-control\" name = \"p3v_2\" disabled/></td>
+           <td><input id = "p3v_2" type="text" class="form-control" name = "p3v_2"/></td>
         </tr>
         <tr>
            <td>3.</td>
            <td><b>Trust</b> : *Trustworthiness leading to confidence *Allow staff the freedom to grow and develop *Relate to others on basis of mutual respect *Courage to stand by your convictions</td>
-           <td><input value=\"$p3v_3\" disabled id = \"p3v_3\" type=\"text\" class=\"form-control\" name = \"p3v_3\" disabled/></td>
+           <td><input id = "p3v_3" type="text" class="form-control" name = "p3v_3"/></td>
         </tr>
         <tr>
            <td>4.</td>
            <td><b>Candour</b> : *Frank and forthright *Give and receive constructive criticism/suggestions *Openly discuss performance deficiencies and take corrective action *Appreciate good performance *Be consistent in words and deeds *Face up to your mistakes</td>
-           <td><input value=\"$p3v_4\" disabled id = \"p3v_4\" type=\"text\" class=\"form-control\" name = \"p3v_4\" disabled/></td>
+           <td><input id = "p3v_4" type="text" class="form-control" name = "p3v_4"/></td>
         </tr>
         <tr>
            <td>5.</td>
            <td><b>Collaboration</b> : *Working in tandem *Be open in sharing information and in seeking suggestions/opinion *Be sensitive to concerns of others, honour your commitment *Encourage team work across departments/functions</td>
-           <td><input value=\"$p3v_5\" disabled id = \"p3v_5\" type=\"text\" class=\"form-control\" name = \"p3v_5\" disabled/></td>
+           <td><input id = "p3v_5" type="text" class="form-control" name = "p3v_5"/></td>
         </tr>
         <tr>
            <td>6.</td>
            <td><b>Involvement</b> : Total commitment; be dedicated and committed to work, build commitment by encouraging wide participation in decision making process to the maximum extent possible.</td>
-           <td><input value=\"$p3v_6\" disabled id = \"p3v_6\" type=\"text\" class=\"form-control\" name = \"p3v_6\" disabled/></td>
+           <td><input id = "p3v_6" type="text" class="form-control" name = "p3v_6"/></td>
         </tr>
         <tr>
            <td>7.</td>
            <td><b>Flexibility</b> : *Ability to participate and adapt to changing circumstances using sound judgement *Be open to accepting new ideas *Be willing to learn from anyone and to do things differently *Be prepared to operate and adapt to different environments</td>
-           <td><input value=\"$p3v_7\" disabled id = \"p3v_7\" type=\"text\" class=\"form-control\" name = \"p3v_7\" disabled/></td>
+           <td><input id = "p3v_7" type="text" class="form-control" name = "p3v_7"/></td>
         </tr>
         <tr>
            <td>8.</td>
            <td><b>Willingness</b> : *As to accept challenge *Be willing to experiment *Allow for freedom to fail, but learn from it too</td>
-           <td><input value=\"$p3v_8\" disabled id = \"p3v_8\" type=\"text\" class=\"form-control\" name = \"p3v_8\" disabled/></td>
+           <td><input id = "p3v_8" type="text" class="form-control" name = "p3v_8"/></td>
         </tr>
         <tr>
            <td>9.</td>
            <td><b>Discipline</b> : *Adherence to accept norms *Honour the promises, and adhere to agreed system *Respect for others time and space *Exercise self control</td>
-           <td><input value=\"$p3v_9\" disabled id = \"p3v_9\" type=\"text\" class=\"form-control\" name = \"p3v_9\" disabled/></td>
+           <td><input id = "p3v_9" type="text" class="form-control" name = "p3v_9"/></td>
         </tr>
         <tr>
            <td>10.</td>
            <td><b>Ethical behaviour</b> : *Demonstrate honestly and sincerity in every action *Apply sound business and professional ethics *Shows consistency with principles, values and behaviours</td>
-           <td><input value=\"$p3v_10\" disabled id = \"p3v_10\" type=\"text\" class=\"form-control\" disabled/></td>
+           <td><input id = "p3v_10" type="text" class="form-control" /></td>
         </tr>
       </table>
       <br>
-      <label  class=\"control-label col-lg-6\">Rating of values=((Total of all attributes)*15/50):</label>
-	  <div class=\"col-lg-6\">
-	  	<label id=\"demo2\">=$total2</label><p>  </p>
+      <label  class="control-label col-lg-6">Rating of values=((Total of all attributes)*15/50):</label>
+	  <div class="col-lg-6">
+	  	<label id="demo2"></label>
+        <button  class="btn btn-default btn-primary" onclick="TV()">Generate Total</button><p>  </p>
 		
         </div>
         <hr>
         <br><br><br>
       <h4><u>PART-4 POTENTIAL APPRAISAL:(The section consists of attributes which are to be demonstrated in day to day activities. Attributes would represent the core values required for Board level postions.)</u></h4>
-      <table class=\"table-bordered table-striped\" style=\"width:100%\">
+      <table class="table-bordered table-striped" style="width:100%">
         <tr>
-          <th class=\"text-center\">Serial No.</th>
-          <th class=\"text-center\">GENERIC ATTRIBUTE</th>
-          <th class=\"text-center\">RATINGS (1-5)</th>
+          <th class="text-center">Serial No.</th>
+          <th class="text-center">GENERIC ATTRIBUTE</th>
+          <th class="text-center">RATINGS (1-5)</th>
         </tr>
         <tr>
            <td>1.</td>
            <td><b>Leadership Abilities</b> : *Demonstrates ability for guiding collective decision making *Demonstrates ability for succession planning *Demonstrates ability for crisis management *Demonstrates ability to take risks</td>
-           <td><input value=\"$p4p_1\" disabled id = \"p4p_1\" type=\"text\" class=\"form-control\" name=\"p4p_1\" disabled></td>
+           <td><input id = "p4p_1" type="text" class="form-control" name="p4p_1"></td>
         </tr>
         <tr>
            <td>2.</td>
            <td><b>Team building</b> : *Demonstrates effectiveness in reorganizing his/her own department *Manage diverse and divergent views and group processes without losing sight of objectives</td>
-           <td><input value=\"$p4p_2\" disabled id = \"p4p_2\" type=\"text\" class=\"form-control\" name=\"p4p_2\" disabled></td>
+           <td><input id = "p4p_2" type="text" class="form-control" name="p4p_2"></td>
         </tr>
         <tr>
            <td>3.</td>
            <td><b>Ability to build a strategic vision</b> : *Demonstrates change to management change *Focus on long term issues *Strategic thinking *Translates visions into goals</td>
-           <td><input value=\"$p4p_3\" disabled id = \"p4p_3\" type=\"text\" class=\"form-control\" name=\"p4p_3\" disabled></td>
+           <td><input id = "p4p_3" type="text" class="form-control" name="p4p_3"></td>
         </tr>
         <tr>
            <td>4.</td>
            <td><b>Business sense</b> : *Commitment to bottom line results by enhancing revenue generation by addressing interest of customers and stakeholders *Balancing need for viable short and long term performance *Optimizing unit / organization’s contribution while supporting corporate objectives *Spotting and pursuing new business opportunities wherever possible</td>
-           <td><input value=\"$p4p_4\" disabled id = \"p4p_4\" type=\"text\" class=\"form-control\" name=\"p4p_4\" disabled></td>
+           <td><input id = "p4p_4" type="text" class="form-control" name="p4p_4"></td>
         </tr>
         <tr>
            <td>5.</td>
            <td><b>Communication skills</b> : *Communicate ideas and information effectively and market key points effectively through public speaking and presentation *Ability to convert ideas through action plan and ensure acceptability within the organization and performance at Board meetings</td>
-           <td><input value=\"$p4p_5\" id = \"p4p_5\" type=\"text\" class=\"form-control\" name=\"p4p_5\" disabled></td>
+           <td><input id = "p4p_5" type="text" class="form-control" name="p4p_5"></td>
         </tr>
       </table>
       <br>
-      <label  class=\"control-label col-lg-6\">Rating on potential=((Total of all attributes)*15/25):</label>
-      <div class=\"col-lg-6\">
-      	<label id=\"demo3\">=$total3</label>
+      <label  class="control-label col-lg-6">Rating on potential=((Total of all attributes)*15/25):</label>
+      <div class="col-lg-6">
+      	<label id="demo3"></label>
+        <button  class="btn btn-default btn-primary" onclick="TGA()">Generate Total</button>
 		
         </div>
         <br><br><br>
          <p><h4><b><u>INTEGRITY(choose any one of the below)</u></b></h4></p>
-      <div class=\"container-fluid  text-center\">
+      <div class="container-fluid  text-center">
       
-          <input type=\"radio\" name=\"Integrity\" >  Beyond doubt.<br><br>
-          <input type=\"radio\" name=\"Integrity\" >  Integrity of the officer is doubtful.A separate secret note is attached.<br><br>
-          <input type=\"radio\" name=\"Integrity\" >  Nothing adverse has been received about the Officer.
+          <input type="radio" name="Integrity" >  Beyond doubt.<br><br>
+          <input type="radio" name="Integrity" >  Integrity of the officer is doubtful.A separate secret note is attached.<br><br>
+          <input type="radio" name="Integrity" >  Nothing adverse has been received about the Officer.
       
       </div>
       <br>
@@ -788,108 +732,109 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
       <h5>FINAL MARKS SCORED</h5>
       
       <div>
-        <table class=\"table-bordered\" style=\"width:100%\">
+        <table class="table-bordered" style="width:100%">
           <tr>
             <th></th>
             <th></th>
-            <th class=\"text-center\">TOTAL MARKS</th>
-            <th class=\"text-center\">MARKS SCORED</th>
+            <th class="text-center">TOTAL MARKS</th>
+            <th class="text-center">MARKS SCORED</th>
           </tr>
 
           <tr>
             <td><b>PART I</b></td>
             <td><b>PERFORMANCE</b></td>
             <td><b>50</b></td>
-            <td><label id=\"displayTotal0\">$total0</td>
+            <td><label id="displayTotal0"></td>
           </tr>
 
           <tr>
             <td><b>PART II</b></td>
             <td><b>COMPETENCIES</b></td>
             <td><b>20</b></td>
-            <td><label id=\"displayTotal1\">$total1</td>
+            <td><label id="displayTotal1"></td>
           </tr>
 
           <tr>
             <td><b>PART III</b></td>
             <td><b>VALUES</b></td>
             <td><b>15</b></td>
-            <td><label id=\"displayTotal2\" >$total2</td>
+            <td><label id="displayTotal2" ></td>
           </tr>
 
           <tr>
             <td><b>PART IV</b></td>
             <td><b>POTENTIAL</b></td>
             <td><b>15</b></td>
-            <td><label id=\"displayTotal3\">$total3</td>
+            <td><label id="displayTotal3"></td>
           </tr>
 
           <tr>
             <td></td>
             <td><b>TOTAL</b></td>
             <td><b>100</b></td>
-            <td><label id=\"totalsum\">$totalsum</td>
+            <td><label id="totalsum"></td>
           </tr>
         </table>
         <br>
         <br>
+        <button class="btn btn-default btn-primary" onclick="totalsum()">Generate Final Total</button>
       </div>
       
       <br><br>
       <!--<form>
         <label>NAME & DESIGNATION OF INITIATING AUTHORITY</label>
-        <input value=\"$ndIA\" disabled type=\"text\" class=\"form-control\">
+        <input type="text" class="form-control">
 
         <label>NAME & DESIGNATION OF REVIEWING AUTHORITY</label>
-        <input value=\"$n&dRA\" disabled type=\"text\" class=\"form-control\">
+        <input type="text" class="form-control">
         <label>COMMENTS OF REVIEWING AUTHORITY</label>
-        <input value=\"$cRA\" disabled type=\"text\" class=\"form-control\">
+        <input type="text" class="form-control">
 
         <label>NAME & DESIGNATION OF ACCEPTING AUTHORITY</label>
-        <input value=\"$n&dAA\" disabled type=\"text\" class=\"form-control\">
+        <input type="text" class="form-control">
         <label>COMMENTS OF ACCEPTING AUTHORITY</label>
-        <input value=\"$cAA\" disabled type=\"text\" class=\"form-control\">
+        <input type="text" class="form-control">
 
       </form>-->
-      <form id=\"formpg114\" class=\"form-validate form-horizontal\">
-        <div class=\"form-group \">
-        <label  class=\"control-label col-lg-3\">NAME & DESIGNATION OF INITIATING AUTHORITY</label>
-        <div class=\"col-lg-9\">
-        <input value=\"$ndIA\" disabled class=\"form-control \" type=\"text\" />
+      <form id="formpg114" class="form-validate form-horizontal">
+        <div class="form-group ">
+        <label  class="control-label col-lg-3">NAME & DESIGNATION OF INITIATING AUTHORITY</label>
+        <div class="col-lg-9">
+        <input class="form-control " type="text" />
         </div>
         </div>
         <br><br>
-        <div class=\"form-group \">
-        <label  class=\"control-label col-lg-3\">NAME & DESIGNATION OF REVIEWING AUTHORITY</label>
-        <div class=\"col-lg-9\">
-        <input value=\"$ndRA\" disabled class=\"form-control \" type=\"text\" />
+        <div class="form-group ">
+        <label  class="control-label col-lg-3">NAME & DESIGNATION OF REVIEWING AUTHORITY</label>
+        <div class="col-lg-9">
+        <input class="form-control " type="text" />
+        </div>
+        </div>
+
+        <div class="form-group ">
+        <label  class="control-label col-lg-3">COMMENTS OF REVIEWING AUTHORITY</label>
+        <div class="col-lg-9">
+        <input class="form-control " type="text" />
         </div>
         </div>
         <br><br>
-        <div class=\"form-group \">
-        <label  class=\"control-label col-lg-3\">COMMENTS OF REVIEWING AUTHORITY</label>
-        <div class=\"col-lg-9\">
-        <input value=\"$cRA\" disabled class=\"form-control \" type=\"text\" />
+        <div class="form-group ">
+        <label  class="control-label col-lg-3">NAME & DESIGNATION OF ACCEPTING AUTHORITY</label>
+        <div class="col-lg-9">
+        <input class="form-control " type="text" />
         </div>
         </div>
-        <br><br>
-        <div class=\"form-group \">
-        <label  class=\"control-label col-lg-3\">NAME & DESIGNATION OF ACCEPTING AUTHORITY</label>
-        <div class=\"col-lg-9\">
-        <input value=\"$ndAA\" disabled class=\"form-control \" type=\"text\" />
-        </div>
-        </div>
-        <br><br>
-        <div class=\"form-group \">
-        <label  class=\"control-label col-lg-3\">COMMENTS OF ACCEPTING AUTHORITY</label>
-        <div class=\"col-lg-9\">
-        <input value=\"$cAA\" disabled class=\"form-control \" type=\"text\" />
+
+        <div class="form-group ">
+        <label  class="control-label col-lg-3">COMMENTS OF ACCEPTING AUTHORITY</label>
+        <div class="col-lg-9">
+        <input class="form-control " type="text" />
         </div>
         </div>
       </form>
 
       <br><br>
-      <table class=\"table-bordered\" style=\"width:100%\" centre>
+      <table class="table-bordered" style="width:100%" centre>
         <tr>
           <th>S.NO</th>
           <th>MARKS</th>
@@ -928,6 +873,8 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
 
 
       </table>
+      <br><br><br>
+     
 
     	</div>
         </div>
@@ -935,9 +882,8 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
       </section>
 
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <script src=\"js/bootstrap.min.js\"></script>
+      <script src="js/bootstrap.min.js"></script>
    </body>
-</html>";
-?>
+</html>

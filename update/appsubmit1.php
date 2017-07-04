@@ -47,21 +47,11 @@ if(empty($_SESSION["ID"])){
   
 <?php
 	// define variables and set to empty values
-	session_start();
 	//$link = "";
 		
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			
-		$Name = test_input($_POST["Name"]);
-		$ID = test_input($_POST["ID"]);
-		
-	  	$Designation = test_input($_POST["Designation"]);
-		$PayScale = test_input($_POST["PayScale"]);
-	  	$Qualification = test_input($_POST["Qualification"]);
-		$PlaceOfPosting = test_input($_POST["PlaceOfPosting"]);
-		
-		$DOB = test_input($_POST["DOB"]);
-		$DOJ = test_input($_POST["DOJ"]);
+	
 		$DOR = test_input($_POST["DOR"]);
 		$DOF = test_input($_POST["DOF"]);
 
@@ -118,7 +108,7 @@ if(empty($_SESSION["ID"])){
 		$MYR_ach5 = test_input($_POST["MYR_ach5"]);
 		$MYR_ach6 = test_input($_POST["MYR_ach6"]);
 		
-		/**
+		/*
 		$MYR_rev1 = test_input($_POST["MYR_rev1"]);
 		$MYR_rev2 = test_input($_POST["MYR_rev2"]);
 		$MYR_rev3 = test_input($_POST["MYR_rev3"]);
@@ -162,7 +152,7 @@ if(empty($_SESSION["ID"])){
 		$YER_rev4 = test_input($_POST["YER_rev4"]);
 		$YER_rev5 = test_input($_POST["YER_rev5"]);
 		$YER_rev6 = test_input($_POST["YER_rev6"]);
-
+   
 		$YER_ma1 = test_input($_POST["YER_ma1"]);
 		$YER_ma2 = test_input($_POST["YER_ma2"]);
 		$YER_ma3 = test_input($_POST["YER_ma3"]);
@@ -190,13 +180,28 @@ if(empty($_SESSION["ID"])){
             if ($conn->connect_error) {
                 die("Connection failed: " . $conn->connect_error);
             }		
+	$q=$_SESSION["ID"];	
+	$sql = "SELECT * FROM employee WHERE ID ='$q'";
+    $result = $conn->query($sql);
+	
+	while($row = mysqli_fetch_array($result))
+	{
+		$Name = $row["Name"];
+		$ID = $row["ID"];
+		$Designation  = $row["Designation"];
+		$PayScale = $row["PayScale"];
+		$Qualification = $row["Qualification"];
+		$PlaceOfPosting = $row["PlaceOfPosting"];
+		$DOB = $row["DOB"];
+		$DOJ = $row["DOJ"];
+	}
 	$db = new mysqli('localhost', $username, $password, $db) or die("Unable to connect");
-
-	$sql = "SELECT * FROM employee WHERE ID='$ID'";
+    $ID=$_SESSION["ID"];
+	$sql = "SELECT * FROM application WHERE ID='$ID'";
 	$result = $conn->query($sql);
 	if($row = mysqli_fetch_array($result))
 	{
-		mysqli_query($db,"UPDATE initiating SET Name='{$Name}', ID='{$ID}', Designation='{$Designation}', PayScale='{$PayScale}', Qualification='{$Qualification}', PlaceOfPosting='{$PlaceOfPosting}', DOB='{$DOB}', DOJ='{$DOJ}', DOR='{$DOR}', DOF='{$DOF}', PPH_f1='{$PPH_f1}', PPH_f2='{$PPH_f2}', PPH_f3='{$PPH_f3}', PPH_f4='{$PPH_f4}', PPH_t1='{$PPH_t1}', PPH_t2='{$PPH_t2}', PPH_t3='{$PPH_t3}', PPH_t4='{$PPH_t4}', PPH_loc1='{$PPH_loc1}', PPH_loc2='{$PPH_loc2}', PPH_loc3='{$PPH_loc3}', PPH_loc4='{$PPH_loc4}', PPH_pos1='{$PPH_pos1}', PPH_pos2='{$PPH_pos2}', PPH_pos3='{$PPH_pos3}', PPH_pos4='{$PPH_pos4}', PPH_res1='{$PPH_res1}', PPH_res2='{$PPH_res2}', PPH_res3='{$PPH_res3}', PPH_res4='{$PPH_res4}', MYR_kpa1='{$MYR_kpa1}', MYR_kpa2='{$MYR_kpa2}', MYR_kpa3='{$MYR_kpa3}', MYR_kpa4='{$MYR_kpa4}', MYR_kpa5='{$MYR_kpa5}', MYR_kpa6='{$MYR_kpa6}', MYR_ind1='{$MYR_ind1}', MYR_ind2='{$MYR_ind2}', MYR_ind3='{$MYR_ind3}', MYR_ind4='{$MYR_ind4}', MYR_ind5='{$MYR_ind5}', MYR_ind6='{$MYR_ind6}', MYR_mm1='{$MYR_mm1}', MYR_mm2='{$MYR_mm2}', MYR_mm3='{$MYR_mm3}', MYR_mm4='{$MYR_mm4}', MYR_mm5='{$MYR_mm5}', MYR_mm6='{$MYR_mm6}', MYR_ach1='{$MYR_ach1}', MYR_ach2='{$MYR_ach2}', MYR_ach3='{$MYR_ach3}', MYR_ach4='{$MYR_ach4}', MYR_ach5='{$MYR_ach5}', MYR_ach6='{$MYR_ach6}', YER_kpa1='{$YER_kpa1}', YER_kpa2='{$YER_kpa2}', YER_kpa3='{$YER_kpa3}', YER_kpa4='{$YER_kpa4}', YER_kpa5='{$YER_kpa5}', YER_kpa6='{$YER_kpa6}', YER_ind1='{$YER_ind1}', YER_ind2='{$YER_ind2}', YER_ind3='{$YER_ind3}', YER_ind4='{$YER_ind4}', YER_ind5='{$YER_ind5}', YER_ind6='{$YER_ind6}', YER_mm1='{$YER_mm1}', YER_mm2='{$YER_mm2}', YER_mm3='{$YER_mm3}', YER_mm4='{$YER_mm4}', YER_mm5='{$YER_mm5}', YER_mm6='{$YER_mm6}', YER_ach1='{$YER_ach1}', YER_ach2='{$YER_ach2}', YER_ach3='{$YER_ach3}', YER_ach4='{$YER_ach4}', YER_ach5='{$YER_ach5}', YER_ach6='{$YER_ach6}' WHERE ID='{$ID}';");
+		mysqli_query($db,"UPDATE application SET Name='{$Name}',ID='{$ID}',Designation='{$Designation}',PayScale='{$PayScale}',Qualification='{$Qualification}',PlaceOfPosting='{$PlaceOfPosting}',DOB='{$DOB}',DOJ='{$DOJ}', DOR='{$DOR}', DOF='{$DOF}', PPH_f1='{$PPH_f1}', PPH_f2='{$PPH_f2}', PPH_f3='{$PPH_f3}', PPH_f4='{$PPH_f4}', PPH_t1='{$PPH_t1}', PPH_t2='{$PPH_t2}', PPH_t3='{$PPH_t3}', PPH_t4='{$PPH_t4}', PPH_loc1='{$PPH_loc1}', PPH_loc2='{$PPH_loc2}', PPH_loc3='{$PPH_loc3}', PPH_loc4='{$PPH_loc4}', PPH_pos1='{$PPH_pos1}', PPH_pos2='{$PPH_pos2}', PPH_pos3='{$PPH_pos3}', PPH_pos4='{$PPH_pos4}', PPH_res1='{$PPH_res1}', PPH_res2='{$PPH_res2}', PPH_res3='{$PPH_res3}', PPH_res4='{$PPH_res4}', MYR_kpa1='{$MYR_kpa1}', MYR_kpa2='{$MYR_kpa2}', MYR_kpa3='{$MYR_kpa3}', MYR_kpa4='{$MYR_kpa4}', MYR_kpa5='{$MYR_kpa5}', MYR_kpa6='{$MYR_kpa6}', MYR_ind1='{$MYR_ind1}', MYR_ind2='{$MYR_ind2}', MYR_ind3='{$MYR_ind3}', MYR_ind4='{$MYR_ind4}', MYR_ind5='{$MYR_ind5}', MYR_ind6='{$MYR_ind6}', MYR_mm1='{$MYR_mm1}', MYR_mm2='{$MYR_mm2}', MYR_mm3='{$MYR_mm3}', MYR_mm4='{$MYR_mm4}', MYR_mm5='{$MYR_mm5}', MYR_mm6='{$MYR_mm6}', MYR_ach1='{$MYR_ach1}', MYR_ach2='{$MYR_ach2}', MYR_ach3='{$MYR_ach3}', MYR_ach4='{$MYR_ach4}', MYR_ach5='{$MYR_ach5}', MYR_ach6='{$MYR_ach6}', YER_kpa1='{$YER_kpa1}', YER_kpa2='{$YER_kpa2}', YER_kpa3='{$YER_kpa3}', YER_kpa4='{$YER_kpa4}', YER_kpa5='{$YER_kpa5}', YER_kpa6='{$YER_kpa6}', YER_ind1='{$YER_ind1}', YER_ind2='{$YER_ind2}', YER_ind3='{$YER_ind3}', YER_ind4='{$YER_ind4}', YER_ind5='{$YER_ind5}', YER_ind6='{$YER_ind6}', YER_mm1='{$YER_mm1}', YER_mm2='{$YER_mm2}', YER_mm3='{$YER_mm3}', YER_mm4='{$YER_mm4}', YER_mm5='{$YER_mm5}', YER_mm6='{$YER_mm6}', YER_ach1='{$YER_ach1}', YER_ach2='{$YER_ach2}', YER_ach3='{$YER_ach3}', YER_ach4='{$YER_ach4}', YER_ach5='{$YER_ach5}', YER_ach6='{$YER_ach6}' WHERE ID='{$ID}';");
 		echo "Form successfully updated";
 	}
 	else

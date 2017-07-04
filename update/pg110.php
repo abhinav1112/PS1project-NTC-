@@ -107,7 +107,7 @@ echo"<!DOCTYPE html>
 		<div class=\"form-group \">
 		  <label  class=\"control-label col-lg-2\">Qualification:(Academic and Professional)</label>
 		  <div class=\"col-lg-10\">
-			<textarea class=\"form-control \" type=\"text\" value=\"$Qualification\" disabled></textarea>
+			<input class=\"form-control \" type=\"text\" value=\"$Qualification\" disabled></textarea>
 		  </div>
 		</div>
 		
@@ -153,29 +153,29 @@ echo"<!DOCTYPE html>
 			  <th>KEY RESPONSIBILITIES</th>
 			</tr>
 			<tr>
-			   <td><input type="text" class="form-control" name="PPH_f1" /></td>
-			   <td><input type="text" class="form-control" name="PPH_t1" /></td>
+			   <td><input type="date" class="form-control" name="PPH_f1" /></td>
+			   <td><input type="date" class="form-control" name="PPH_t1" /></td>
 			   <td><input type="text" class="form-control" name="PPH_loc1" /></td>
 			   <td><input type="text" class="form-control" name="PPH_pos1" /></td>
 			   <td><input type="text" class="form-control" name="PPH_res1" /></td> 
 			</tr>
 			<tr>
-			   <td><input type="text" class="form-control" name="PPH_f2" /></td>
-			   <td><input type="text" class="form-control" name="PPH_t2" /></td>
+			   <td><input type="date" class="form-control" name="PPH_f2" /></td>
+			   <td><input type="date" class="form-control" name="PPH_t2" /></td>
 			   <td><input type="text" class="form-control" name="PPH_loc2" /></td>
 			   <td><input type="text" class="form-control" name="PPH_pos2" /></td>
 			   <td><input type="text" class="form-control" name="PPH_res2" /></td> 
 			</tr>
 			<tr>
-			   <td><input type="text" class="form-control" name="PPH_f3" /></td>
-			   <td><input type="text" class="form-control" name="PPH_t3" /></td>
+			   <td><input type="date" class="form-control" name="PPH_f3" /></td>
+			   <td><input type="date" class="form-control" name="PPH_t3" /></td>
 			   <td><input type="text" class="form-control" name="PPH_loc3" /></td>
 			   <td><input type="text" class="form-control" name="PPH_pos3" /></td>
 			   <td><input type="text" class="form-control" name="PPH_res3" /></td> 
 			</tr>
 			<tr>
-			   <td><input type="text" class="form-control" name="PPH_f4" /></td>
-			   <td><input type="text" class="form-control" name="PPH_t4" /></td>
+			   <td><input type="date" class="form-control" name="PPH_f4" /></td>
+			   <td><input type="date" class="form-control" name="PPH_t4" /></td>
 			   <td><input type="text" class="form-control" name="PPH_loc4" /></td>
 			   <td><input type="text" class="form-control" name="PPH_pos4" /></td>
 			   <td><input type="text" class="form-control" name="PPH_res4" /></td> 

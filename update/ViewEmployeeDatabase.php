@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if(empty($_SESSION["IDhr"])){
+     header("location:login.php");
+   }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +39,11 @@
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+					<li><a href="hrlogin.php">LogOut</a></li>
+                </ul>
+            </div>
    </div>
             <?php
 			$nn=0;
@@ -63,9 +73,6 @@
 			echo	  "<th>ID</th>";
 			echo	  "<th>Department</th>";
 			echo	  "<th>PlaceOfPosting</th>";
-			echo	  "<th>InitiatingOfficer</th>";
-			echo	  "<th>ReviewingOfficer</th>";
-			echo	  "<th>AcceptingOfficer</th>";
 			echo	"</tr>";
             while($row = mysqli_fetch_array($result))
             {
@@ -75,9 +82,6 @@
 				echo   "<td>".$row['ID']."</td>";
 				echo   "<td>".$row['Department']."</td>";
 				echo   "<td>".$row['PlaceOfPosting']."</td>";
-				echo   "<td>".$row['InitiatingOfficer']."</td>";
-				echo   "<td>".$row['ReviewingOfficer']."</td>";
-				echo   "<td>".$row['AcceptingOfficer']."</td>";
 				echo "</tr>";
 			}
             echo "</div>";

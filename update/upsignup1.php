@@ -53,14 +53,7 @@ if(empty($_SESSION["ID"])){
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$q1 = test_input($_POST["Name"]);
 		// check if name only contains letters and whitespace
-		if (!preg_match("/^[a-zA-Z ]*$/",$_SESSION["Name"])) {
-			echo "
-			<script language='javascript'>
-				alert('Name should contain letters and Spaces Only!');
-			</script>
-			";
-			exit();
-		}
+
         $q12 = test_input($_POST["Email"]);
 		$q2 = test_input($_POST["Password"]);
 		//$_SESSION['Password'] = sha1($_SESSION['Password']);
@@ -107,7 +100,11 @@ if(empty($_SESSION["ID"])){
             }		
 	$db = new mysqli('localhost', $username, $password, $db) or die("Unable to connect");
     $ID=$_SESSION["ID"];
-    mysqli_query($db,"UPDATE employee SET Name='{$q1}', Email='{$q12}',Password='{$q2}', DOB='{$q3}', DOJ='{$q4}', Qualification='{$q5}', Department='{$q6}', Designation='{$q7}', PlaceOfPosting='{$q8}', Payscale='{$q9}', Basicpay='{$q10}', Gradepay='{$q11}' WHERE ID='{$ID}';");
+    {
+		mysqli_query($db,"UPDATE employee SET Name='{$q1}', Email='{$q12}',Password='{$q2}', DOB='{$q3}', DOJ='{$q4}', Qualification='{$q5}', Department='{$q6}', Designation='{$q7}', PlaceOfPosting='{$q8}', Payscale='{$q9}', Basicpay='{$q10}', Gradepay='{$q11}' WHERE ID='{$ID}';");
+	    mysqli_query($db,"UPDATE application SET Name='{$q1}',Designation='{$q7}',PayScale='{$q9}',Qualification='{$q5}',PlaceOfPosting='{$q8}',DOB='{$q3}',DOJ='{$q4}' WHERE ID='{$ID}';");
+
+	}
         
 	echo "Hey ".$q1. "! You have been updated Successfully. <br>";
 

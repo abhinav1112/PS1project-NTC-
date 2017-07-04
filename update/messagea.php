@@ -1,6 +1,11 @@
+<?php
+session_start();
+if(empty($_SESSION["ID"])){
+     header("location:login.php");
+   }
+?>
 <!DOCTYPE html>
 <html lang="en">
-	<title>LogIn Page</title>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -18,8 +23,8 @@
       .img-responsive{
         margin: 0 auto;
       }
-      #loginform{
-        padding-top: 100px;
+      #signupform{
+        padding-top: 75px;
         margin: 0 auto;
         width: 25%;
       }
@@ -30,37 +35,20 @@
     
   </head>
   <body id="mainbody">
-     <?php
-	 session_start();
-		$_SESSION["Passwordhr"] =  $_SESSION["IDhr"] = '';
-
-?>
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-					<li><a href="login.php">Go Back To Home Page</a></li>
+					<li><a href="login.php">LogOut</a></li>
                 </ul>
             </div>
    </div>
-   <form id="loginform" action="hrlogin1.php" method="post" >
-    <div class="form-group">
-      <label for="userID">Hr ID:</label>
-      <input type="text" class="form-control" name="IDhr">
+   <form id="afterloginform">
+     <div class="form-group">
+	  Initiating or reviewing authority has not submitted the form.
+      <label for="pwd">Review as:</label>
+	  <button  class="btn btn-default"><a href="afterlogin.php">Go back to portal<a/></button>
     </div>
-    <div class="form-group">
-      <label for="pwd">Password:</label>
-      <input type="password" class="form-control" name="Passwordhr">
-    </div>
-  
-    <button type="submit" class="btn btn-default btn-primary">Login</button>
    </form>
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
   </body>
-</html>

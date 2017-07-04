@@ -587,6 +587,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
     
     
   </form>
+  <form id=\"formpg114\" class=\"form-validate form-horizontal\" method=\"post\" action=\"submitformr.php\">
   <div class=\"form-group \">
       <label  class=\"control-label col-lg-6\">Total Performance marks for the year(Proforate total marks of 50) = (Total marks obtained) * 50 / (Total maximum marks) </label>
       <div class=\"col-lg-6\">
@@ -595,7 +596,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
     </div><br>
    <div class=\"form-group \">
       <div class=\"col-lg-10\">
-      <input class=\"form-control \" type=\"text\" value=\"$cop\" name=\"cop\" placeholder=\"Comments on performance and review discussions if any by appraiser including need for training and development\" disabled></input>
+      <input class=\"form-control \" type=\"text\" name=\"cop\" placeholder=\"Comments on performance and review discussions if any by appraiser including need for training and development\" ></input>
       </div>
     </div> 
   </div>
@@ -647,7 +648,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         </tr>
         <tr>
            <td>8.</td>
-           <td><b>Inspire people</b> : To generate a sense of purpose for the work done by the organisation through instilling enthusiasm, loyalty and commitment among team member at  all levels of the organisation, inspiring, motivating and guiding others towards organisational goals and objectives, setting an example for others by behaving in ways that are consistent with espoused beliefs and values and the organisationâ€™s vision and direction</td>
+           <td><b>Inspire people</b> : To generate a sense of purpose for the work done by the organisation through instilling enthusiasm, loyalty and commitment among team member at  all levels of the organisation, inspiring, motivating and guiding others towards organisational goals and objectives, setting an example for others by behaving in ways that are consistent with espoused beliefs and values and the organisation’s vision and direction</td>
            <td><input id = \"p2c_8\" type=\"text\" class=\"form-control\" name=\"p2c_8\" value=\"$p2c_8\" disabled></td>
         </tr>
         <tr>
@@ -758,7 +759,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         </tr>
         <tr>
            <td>4.</td>
-           <td><b>Business sense</b> : *Commitment to bottom line results by enhancing revenue generation by addressing interest of customers and stakeholders *Balancing need for viable short and long term performance *Optimizing unit / organizationâ€™s contribution while supporting corporate objectives *Spotting and pursuing new business opportunities wherever possible</td>
+           <td><b>Business sense</b> : *Commitment to bottom line results by enhancing revenue generation by addressing interest of customers and stakeholders *Balancing need for viable short and long term performance *Optimizing unit / organization’s contribution while supporting corporate objectives *Spotting and pursuing new business opportunities wherever possible</td>
            <td><input value=\"$p4p_4\" disabled id = \"p4p_4\" type=\"text\" class=\"form-control\" name=\"p4p_4\" disabled></td>
         </tr>
         <tr>
@@ -833,6 +834,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         </table>
         <br>
         <br>
+        
       </div>
       
       <br><br>
@@ -841,12 +843,12 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         <input value=\"$ndIA\" disabled type=\"text\" class=\"form-control\">
 
         <label>NAME & DESIGNATION OF REVIEWING AUTHORITY</label>
-        <input value=\"$n&dRA\" disabled type=\"text\" class=\"form-control\">
+        <input value=\"$ndRA\" disabled type=\"text\" class=\"form-control\">
         <label>COMMENTS OF REVIEWING AUTHORITY</label>
         <input value=\"$cRA\" disabled type=\"text\" class=\"form-control\">
 
         <label>NAME & DESIGNATION OF ACCEPTING AUTHORITY</label>
-        <input value=\"$n&dAA\" disabled type=\"text\" class=\"form-control\">
+        <input value=\"$ndAA\" disabled type=\"text\" class=\"form-control\">
         <label>COMMENTS OF ACCEPTING AUTHORITY</label>
         <input value=\"$cAA\" disabled type=\"text\" class=\"form-control\">
 
@@ -862,14 +864,14 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         <div class=\"form-group \">
         <label  class=\"control-label col-lg-3\">NAME & DESIGNATION OF REVIEWING AUTHORITY</label>
         <div class=\"col-lg-9\">
-        <input value=\"$ndRA\" disabled class=\"form-control \" type=\"text\" />
+        <input name=\"ndRA\" class=\"form-control \" type=\"text\" />
         </div>
         </div>
         <br><br>
         <div class=\"form-group \">
         <label  class=\"control-label col-lg-3\">COMMENTS OF REVIEWING AUTHORITY</label>
         <div class=\"col-lg-9\">
-        <input value=\"$cRA\" disabled class=\"form-control \" type=\"text\" />
+        <input name=\"cRA\" class=\"form-control \" type=\"text\" />
         </div>
         </div>
         <br><br>
@@ -886,7 +888,6 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         <input value=\"$cAA\" disabled class=\"form-control \" type=\"text\" />
         </div>
         </div>
-      </form>
 
       <br><br>
       <table class=\"table-bordered\" style=\"width:100%\" centre>
@@ -928,16 +929,20 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
 
 
       </table>
+	  <br><br>
+	  <button type=\"submit\" class=\"btn btn-default \" >Submit Form</button>
+      <br><br><br>
+     
 
     	</div>
         </div>
         </div>
       </section>
-
+    </form>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src=\"js/bootstrap.min.js\"></script>
    </body>
-</html>";
-?>
+</html>
+";?>

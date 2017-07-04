@@ -84,26 +84,63 @@ if(empty($_SESSION["IDhr"])){
 			echo	  "<th>Employe's Initiating Officer</th>";
 			echo	  "<th>Employe's Accepting Officer</th>";
 			echo	  "<th>Employe's Reviewing Officer</th>";
+			echo	  "<th>Status of Initiating Officer</th>";
+			echo	  "<th>Status of Accepting Officer</th>";
+			echo	  "<th>Status of Reviewing Officer</th>";
 			echo	"</tr>";
             while($row = mysqli_fetch_array($result))
             {
                 $q3 = $row["ID"];
-				$_SESSION["EmpId"] = $row["ID"];
 			    $nn++;
                 $sql2 = "SELECT Name,ID FROM employee where ID = '$q3'";
                 $result2 = $conn->query($sql2);
                 $row2 = $result2->fetch_assoc();
-
+				$qqq=$row2['ID'];
+				$sql3 = "SELECT InitId,FormStatus FROM initiating where EmpId = '$q3'";
+                $result3 = $conn->query($sql3);
+                $row3 = $result3->fetch_assoc();
+				$sql4 = "SELECT AcceptId,FormStatus FROM accepting where EmpId = '$q3'";
+                $result4 = $conn->query($sql4);
+                $row4 = $result4->fetch_assoc();
+				$sql5 = "SELECT ReviewId,FormStatus FROM reviewing where EmpId = '$q3'";
+                $result5 = $conn->query($sql5);
+                $row5 = $result5->fetch_assoc();
+				$i=$row3['InitId'];
+				$a=$row4['AcceptId'];
+				$r=$row5['ReviewId'];
 				echo "<tr>";
 				echo   "<td>".$nn."</td>";
 				echo   "<td>".$row2['Name']."</td>";
-				echo   "<td>".$row2['ID']."</td>";
-				echo   "<td><button  type='submit' name='viewapp'  ><a href='fullform.php'>View Application</a></button></td>";
+				if($row4['FormStatus'])
+				echo   "<form role=\"form\" method=\"post\" action=\"fullforma.php\">";
+			    else if($row5['FormStatus'])
+				echo   "<form role=\"form\" method=\"post\" action=\"fullformr.php\">";
+			    else if($row3['FormStatus'])
+				echo   "<form role=\"form\" method=\"post\" action=\"fullformi.php\">";
+			    else
+				echo   "<form role=\"form\" method=\"post\" action=\"fullform.php\">";
+			    echo   "<td><input type=\"text\"  value=\"$qqq\" name='qid' readonly/> </td>";
+			    echo   "<td><button  type='submit' name='viewapp'  >View Application</button></td>";
+				echo   "</form>";
 				echo   "<form role=\"form\" method=\"post\" action=\"hrback.php\">";
-				echo   "<td><input  type='text' name='init'  ></td>";
-				echo   "<td><input  type='text' name='accept'  ></td>";
-				echo   "<td><input  type='text' name='review'  ></td>";
+				echo   "<td><input  type='text' value=\"$i\" name='init'  ></td>";
+				echo   "<td><input  type='text' value=\"$a\" name='accept'  ></td>";
+				echo   "<td><input  type='text' value=\"$r\" name='review'  ></td>";
+				if($row3['FormStatus'])
+				echo   "<td><div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn btn-success active\"><input type=\"checkbox\" autocomplete=\"off\" checked><span class=\"glyphicon glyphicon-ok\"></span></label></div></td>";
+				else
+				echo   "<td>Not Submitted</td>";
+                if($row4['FormStatus'])
+				echo   "<td><div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn btn-success active\"><input type=\"checkbox\" autocomplete=\"off\" checked><span class=\"glyphicon glyphicon-ok\"></span></label></div></td>";
+				else
+				echo   "<td>Not Submitted</td>";
+                if($row5['FormStatus'])
+				echo   "<td><div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn btn-success active\"><input type=\"checkbox\" autocomplete=\"off\" checked><span class=\"glyphicon glyphicon-ok\"></span></label></div></td>";
+				else
+				echo   "<td>Not Submitted</td>";
+				echo   "<input type='hidden'  value=\"$qqq\" name='qid' /> ";
 				echo   "<td><button type=\"submit\"  \"> Finalize</button></td>";
+				
                 echo   "</form>";
 				echo "</tr>";
 			}

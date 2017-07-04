@@ -587,6 +587,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
     
     
   </form>
+  <form id=\"formpg114\" class=\"form-validate form-horizontal\" method=\"post\" action=\"submitforma.php\">
   <div class=\"form-group \">
       <label  class=\"control-label col-lg-6\">Total Performance marks for the year(Proforate total marks of 50) = (Total marks obtained) * 50 / (Total maximum marks) </label>
       <div class=\"col-lg-6\">
@@ -595,7 +596,7 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
     </div><br>
    <div class=\"form-group \">
       <div class=\"col-lg-10\">
-      <input class=\"form-control \" type=\"text\" value=\"$cop\" name=\"cop\" placeholder=\"Comments on performance and review discussions if any by appraiser including need for training and development\" disabled></input>
+      <input class=\"form-control \" type=\"text\" name=\"cop\" placeholder=\"Comments on performance and review discussions if any by appraiser including need for training and development\" ></input>
       </div>
     </div> 
   </div>
@@ -800,35 +801,35 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
             <td><b>PART I</b></td>
             <td><b>PERFORMANCE</b></td>
             <td><b>50</b></td>
-            <td><label id=\"displayTotal0\">$total0</td>
+            <td><label id=\"displayTotal0\"></td>
           </tr>
 
           <tr>
             <td><b>PART II</b></td>
             <td><b>COMPETENCIES</b></td>
             <td><b>20</b></td>
-            <td><label id=\"displayTotal1\">$total1</td>
+            <td><label id=\"displayTotal1\"></td>
           </tr>
 
           <tr>
             <td><b>PART III</b></td>
             <td><b>VALUES</b></td>
             <td><b>15</b></td>
-            <td><label id=\"displayTotal2\" >$total2</td>
+            <td><label id=\"displayTotal2\" ></td>
           </tr>
 
           <tr>
             <td><b>PART IV</b></td>
             <td><b>POTENTIAL</b></td>
             <td><b>15</b></td>
-            <td><label id=\"displayTotal3\">$total3</td>
+            <td><label id=\"displayTotal3\"></td>
           </tr>
 
           <tr>
             <td></td>
             <td><b>TOTAL</b></td>
             <td><b>100</b></td>
-            <td><label id=\"totalsum\">$totalsum</td>
+            <td><label id=\"totalsum\"></td>
           </tr>
         </table>
         <br>
@@ -841,12 +842,12 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         <input value=\"$ndIA\" disabled type=\"text\" class=\"form-control\">
 
         <label>NAME & DESIGNATION OF REVIEWING AUTHORITY</label>
-        <input value=\"$n&dRA\" disabled type=\"text\" class=\"form-control\">
+        <input value=\"$ndRA\" disabled type=\"text\" class=\"form-control\">
         <label>COMMENTS OF REVIEWING AUTHORITY</label>
         <input value=\"$cRA\" disabled type=\"text\" class=\"form-control\">
 
         <label>NAME & DESIGNATION OF ACCEPTING AUTHORITY</label>
-        <input value=\"$n&dAA\" disabled type=\"text\" class=\"form-control\">
+        <input value=\"$ndAA\" disabled type=\"text\" class=\"form-control\">
         <label>COMMENTS OF ACCEPTING AUTHORITY</label>
         <input value=\"$cAA\" disabled type=\"text\" class=\"form-control\">
 
@@ -876,17 +877,16 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
         <div class=\"form-group \">
         <label  class=\"control-label col-lg-3\">NAME & DESIGNATION OF ACCEPTING AUTHORITY</label>
         <div class=\"col-lg-9\">
-        <input value=\"$ndAA\" disabled class=\"form-control \" type=\"text\" />
+        <input name=\"ndAA\" class=\"form-control \" type=\"text\" />
         </div>
         </div>
         <br><br>
         <div class=\"form-group \">
         <label  class=\"control-label col-lg-3\">COMMENTS OF ACCEPTING AUTHORITY</label>
         <div class=\"col-lg-9\">
-        <input value=\"$cAA\" disabled class=\"form-control \" type=\"text\" />
+        <input name=\"cAA\" class=\"form-control \" type=\"text\" />
         </div>
         </div>
-      </form>
 
       <br><br>
       <table class=\"table-bordered\" style=\"width:100%\" centre>
@@ -928,16 +928,20 @@ if(empty($_SESSION["ID"])&&empty($_SESSION["IDhr"])){
 
 
       </table>
+	  <br><br>
+	  <button type=\"submit\" class=\"btn btn-default \" >Submit Form</button>
+      <br><br><br>
+     
 
     	</div>
         </div>
         </div>
       </section>
-
+    </form>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
       <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js\"></script>
       <!-- Include all compiled plugins (below), or include individual files as needed -->
       <script src=\"js/bootstrap.min.js\"></script>
    </body>
-</html>";
-?>
+</html>";?>
+

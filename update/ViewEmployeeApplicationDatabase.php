@@ -1,4 +1,9 @@
-
+<?php
+session_start();
+if(empty($_SESSION["IDhr"])){
+     header("location:login.php");
+   }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,6 +39,11 @@
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
+   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+					<li><a href="hrlogin.php">LogOut</a></li>
+                </ul>
+            </div>
    </div>
             <?php
 			$nn=0;

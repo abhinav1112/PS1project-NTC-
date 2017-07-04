@@ -77,23 +77,44 @@ if(empty($_SESSION["ID"])){
 			echo	  "<th>Employee Name</th>";
 			echo	  "<th>Employee Id</th>";
 			echo	  "<th>Employee Application</th>";
-
+            echo	  "<th>Status of form submission</th>";
 			echo	"</tr>";
                         while($row = mysqli_fetch_array($result))
                         {
                             $q3 = $row["EmpId"];
 							$_SESSION["ReviewId"]=$row["EmpId"];
-							$_SESSION["FormId"] = $row2['ID'];
 							$nn++;
             $sql2 = "SELECT Name,ID FROM employee where ID = '$q3'";
             $result2 = $conn->query($sql2);
             $row2 = $result2->fetch_assoc();
-
+            $result2 = $conn->query($sql2);
+            $row2 = $result2->fetch_assoc();
+			$qqq=$row2['ID'];
+			$sql3 = "SELECT InitId,FormStatus FROM initiating where EmpId = '$q3'";
+                $result3 = $conn->query($sql3);
+                $row3 = $result3->fetch_assoc();
+				$sql4 = "SELECT AcceptId,FormStatus FROM accepting where EmpId = '$q3'";
+                $result4 = $conn->query($sql4);
+                $row4 = $result4->fetch_assoc();
+				$sql5 = "SELECT ReviewId,FormStatus FROM reviewing where EmpId = '$q3'";
+                $result5 = $conn->query($sql5);
+                $row5 = $result5->fetch_assoc();
 			echo "<tr>";
 			echo   "<td>".$nn."</td>";
 			echo   "<td><span class='label label-primary'>".$row2['Name']."</span></td>";
-			echo   "<td><span class='label label-primary'>".$row2['ID']."</span></td>";
-			echo   "<td><button  type='submit' name='viewapp'  ><a href='fullform.php'>View Application</a></button></td>";
+			if($row3['FormStatus'])
+			{echo   "<form role=\"form\" method=\"post\" action=\"fullformr.php\">";
+			echo   "<td><input type=\"text\"  value=\"$qqq\" name='qid' readonly/> </td>";
+			echo   "<td><button  type='submit' name='viewapp'  >View Application</button></td>";}
+			else
+			{
+			echo   "<td><input type=\"text\"  value=\"$qqq\" name='qid' readonly/> </td>";
+			echo   "<td><button  type='submit' name='viewapp'  ><a href=\"messager.php\">View Application</a></button></td>";}
+			if($row5['FormStatus'])
+			echo   "<td><div class=\"btn-group\" data-toggle=\"buttons\"><label class=\"btn btn-success active\"><input type=\"checkbox\" autocomplete=\"off\" checked><span class=\"glyphicon glyphicon-ok\"></span></label></div></td>";
+			else
+			echo   "<td>Not Submitted</td>";
+			 echo   "</form>";
 			echo "</tr>";
 				
 		

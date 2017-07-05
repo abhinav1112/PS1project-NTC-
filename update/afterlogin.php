@@ -39,14 +39,11 @@ if(empty($_SESSION["ID"])){
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin">PERFORMANCE MANAGEMENT SYSTEM</h3>
-   
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-				    <li><a href="upsignup.php">Update profile</a></li>
-					<li><a href="login.php">LogOut</a></li>
-                </ul>
-            </div>
    </div>
+      <a href = "login.php"><button type=""  class="btn btn-default btn-danger" style="position: relative; right: 0; float: right">Logout</button></a>
+   <a href = "upsignup.php"><button type=""  class="btn btn-default btn-success" style="position: relative; right: 0; float: right;">Update Profile</button></a>
+
+   
    <form id="afterloginform">
     <div class="form-group">
      <button  class="btn btn-default"><a href="pg110.php">Self Appraisal<a/></button>

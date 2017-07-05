@@ -65,12 +65,8 @@ echo"<!DOCTYPE html>
    <img class =\"img-responsive\" src=\"ntc-logo.png\" i>
    <div class=\"container-fluid bg-1 text-center\">
    <h3 class=\"margin\"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
-   <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
-                <ul class=\"nav navbar-nav navbar-right\">
-					<li><a href=\"login.php\">LogOut</a></li>
-                </ul>
-            </div>
    </div>
+   <a href = \"login.php\"><button class=\"btn btn-default btn-danger\" style=\"position: absolute; right: 0;\">Logout</button></a>
    
    <div class=\"container-fluid text-center\">
    <h4 class=\"margin\"><b>Performance Appraisal form for executives in the level of E-0 to E-7</b></h4>
@@ -337,12 +333,7 @@ echo"<!DOCTYPE html>
 		</div>
 		<hr>
 
-		<div class="form-group ">
-			<label  class="control-label col-lg-6">Total Performance marks for the year(Proforate tot total marks of 50) = (Total marks obtained) * 50 / (Total maximum marks) =</label>
-			<div class="col-lg-6">
-				<input class="form-control" type="text" width="30%" />
-			</div>
-		</div><br>
+		<br>
 	
 		<div class="form-group">
 			<input type="submit" class="btn btn-default btn-primary">

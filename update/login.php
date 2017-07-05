@@ -39,12 +39,10 @@
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class = "active"><a href="hrlogin.php">login as HR</a></li>
-                </ul>
-            </div>
-   </div>
+    </div>
+      <a href = "hrlogin.php"><button type="" id="bs-example-navbar-collapse-1" class="btn btn-default btn-success" style="position: absolute; right: 0;">HR Login</button></a>
+    
+
    <form id="loginform" action="loginb.php" method="post" >
     <div class="form-group">
       <label for="userID">User ID:</label>

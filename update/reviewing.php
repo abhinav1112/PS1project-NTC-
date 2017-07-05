@@ -40,13 +40,10 @@ if(empty($_SESSION["ID"])){
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class = "active"><a href="ViewEmployeeDatabase.php">View Employee Database</a></li>
-					<li><a href="login.php">LogOut</a></li>
-                </ul>
-            </div>
    </div>
+     <a href = "login.php"><button type=""  class="btn btn-default btn-danger" style="position: relative; right: 0; float: right">Logout</button></a>
+   
+   
             <?php
 			$_SESSION["ReviewId"]="";
 			$_SESSION["FormId"]="";

@@ -38,12 +38,8 @@
    <img class ="img-responsive" src="ntc-logo.png" i>
    <div class="container-fluid bg-1 text-center">
    <h3 class="margin"><bold>PERFORMANCE MANAGEMENT SYSTEM</bold></h3>
-   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-					<li><a href="login.php">Go Back To Home Page</a></li>
-                </ul>
-            </div>
    </div>
+   <a href = "login.php"><button type="" id="bs-example-navbar-collapse-1" class="btn btn-default btn-success" style="position: absolute; right: 0;">Go Back To HomePage</button></a>
    <form id="loginform" action="hrlogin1.php" method="post" >
     <div class="form-group">
       <label for="userID">Hr ID:</label>

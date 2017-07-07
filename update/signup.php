@@ -64,7 +64,20 @@
 	  </select><br>
       
 	  <label for="">Designation:</label>
-      <input type="text" name="Designation" class="form-control" id=""><br>
+      <select name="Designation" class="form-control" required>
+      <option selected disabled value="">Select Designation</option>
+      <option value="AssistantManager" name="Designation">Assistant Manager</option>
+      <option value="DeputyManager" name="Designation">Deputy Manager</option>
+      <option value="JointManager" name="Designation">Joint Manager</option>
+      <option value="Manager" name="Designation">Manager</option>
+      <option value="SeniorManager" name="Designation">Senior Manager</option>
+      <option value="DeputyGeneralManager" name="Designation">Deputy General Manager</option>
+      <option value="GeneralManager" name="Designation">General Manager</option>
+      <option value="ChiefGeneralManager" name="Designation">Chief General Manager</option>
+      <option value="ExecutiveDirector" name="Designation">Executive Director</option>
+      <option value="SeniorExecutiveDirector" name="Designation">Senior Executive Director</option>
+      </select>
+      <br>
 	  
 	  <label for="">Place of Posting:</label>
       <select name="PlaceOfPosting" class="form-control" required>
@@ -72,6 +85,31 @@
 			<option value="Delhi" name="PlaceOfPosting">Delhi</option>
 			<option value="Mumbai" name="PlaceOfPosting">Mumbai</option>
 			<option value="Coimbatore" name="PlaceOfPosting">Coimbatore</option>
+      <option value="India United Mills No5, Mumbai" name="PlaceOfPosting">India United Mills No5, Mumbai</option>
+      <option value="Podar Mills, Mumbai" name="PlaceOfPosting">Podar Mills, Mumbai</option>
+      <option value="Tata Mills, Mumbai" name="PlaceOfPosting">Tata Mills, Mumbai</option>
+      <option value="Barshi Mills, Barshi" name="PlaceOfPosting">Barshi Mills, Barshi</option>
+      <option value="Finlay Mills, Achalpur" name="PlaceOfPosting">Finlay Mills, Achalpur</option>
+      <option value="Rajnagar Mills, Ahmedabad" name="PlaceOfPosting">Rajnagar Mills, Ahmedabad</option>
+      <option value="NBT Mills, Bhopal" name="PlaceOfPosting">NBT Mills, Bhopal</option>
+      <option value="BT Mills, Burhanpur" name="PlaceOfPosting">BT Mills, Burhanpur</option>
+      <option value="Arati Mills, Howrah" name="PlaceOfPosting">Arati Mills, Howrah</option>
+      <option value="Sri Rangavilas, Coimbatore" name="PlaceOfPosting">Sri Rangavilas, Coimbatore</option>
+      <option value="CBE Murugan Mills, CBE" name="PlaceOfPosting">CBE Murugan Mills, CBE</option>
+      <option value="CBE 'S'and'W' Mills, Coimbatore" name="PlaceOfPosting">CBE 'S'and'W' Mills, Coimbatore</option>
+      <option value="Pankaja Mills, Coimbatore" name="PlaceOfPosting">Pankaja Mills, Coimbatore</option>
+      <option value="Pioneer Spinners, Paramakudi" name="PlaceOfPosting">Pioneer Spinners, Paramakudi</option>
+      <option value="Kaleeswar B, Kalayarkoil" name="PlaceOfPosting">Kaleeswar B, Kalayarkoil</option>
+      <option value="Alagappa Textiles, Trichur" name="PlaceOfPosting">Alagappa Textiles, Trichur</option>
+      <option value="Kerala Laxmi Mills, Trichur" name="PlaceOfPosting">Kerala Laxmi Mills, Trichur</option>
+      <option value="Vijay Mohini Mills, TVM" name="PlaceOfPosting">Vijay Mohini Mills, TVM</option>
+      <option value="Cannanore Spg and Wvg Mills, Kannur" name="PlaceOfPosting">Cannanore Spg and Wvg Mills, Kannur</option>
+      <option value="Cannanore Spg and Wvg Mills, Mahe" name="PlaceOfPosting">Cannanore Spg and Wvg Mills, Mahe</option>
+      <option value="NMM, Hassan" name="PlaceOfPosting">NMM, Hassan</option>
+      <option value="Tirupati Cotton Mills, Tirupati" name="PlaceOfPosting">Tirupati Cotton Mills, Tirupati</option>
+
+
+
 	  </select><br>
     
       <label for="">Pay Scale:</label>
